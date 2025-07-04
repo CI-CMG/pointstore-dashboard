@@ -1,13 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import Bookmarks from '@arcgis/core/widgets/Bookmarks';
-import Expand from '@arcgis/core/widgets/Expand';
 import MapView from "@arcgis/core/views/MapView";
 import WebMap from "@arcgis/core/WebMap";
 // import type Map from "@arcgis/core/Map"
-import './App.css'
+import './MapComponent.css'
 
 
-function App() {
+export default function MapComponent() {
+    console.log('inside MapComponent...')
   const mapDiv = useRef(null);
 
   useEffect(() => {
@@ -29,5 +28,3 @@ function App() {
      <div className="mapDiv" ref={mapDiv}></div>
   )
 }
-
-export default App
