@@ -6,7 +6,6 @@ import './MapComponent.css'
 
 
 export default function MapComponent() {
-    console.log('inside MapComponent...')
   const mapDiv = useRef(null);
 
   useEffect(() => {
@@ -14,12 +13,14 @@ export default function MapComponent() {
       const webmap = new WebMap({
         portalItem: {
           id: "43b93cc9be994efbb5a60a2b2d85f151"
-        }
+        },
       })
 
       const view = new MapView({
         container: mapDiv.current,
-        map: webmap
+        map: webmap,
+        zoom: 3
+
       })
     }
   }, [mapDiv])

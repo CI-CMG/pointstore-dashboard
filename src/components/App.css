@@ -1,7 +1,7 @@
 .wrapper {
   display: grid;
   grid-template-rows: 60px auto 40px;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 350px auto;
   grid-template-areas:
     'header header'
     'sidebar main'
@@ -16,7 +16,7 @@
 
 .sidebar {
   grid-area: sidebar;
-  background-color: lightgrey;
+  background-color: slategray;
   overflow: auto;
 }
 

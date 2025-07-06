@@ -4,19 +4,21 @@ import WebMap from "@arcgis/core/WebMap"
 import MapComponent from "./MapComponent";
 import './App.css'
 import HeaderComponent from "./HeaderComponent";
+import SidePanel from "./SidePanel";
 
 
 function App() {
-  console.log('inside App...')
   return (
     <div className={'wrapper'}>
       <div className={'header'}>
-        <HeaderComponent title={'Crowdsourced Bathymetry Pointstore Dashboard'}/>
+        <HeaderComponent title={'CSB Pointstore Dashboard'}/>
       </div>
       <div className={'main'}>
         <MapComponent />
       </div>
-      <div className={'sidebar'}></div>
+      <div className={'sidebar'}>
+        <SidePanel/>
+      </div>
       <div className={'footer'}></div>
     </div>
   )

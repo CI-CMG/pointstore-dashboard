@@ -1,0 +1,11 @@
+.MetricsPanel {
+  background-color: slategray;
+  color: whitesmoke;
+  padding-left: 15px;
+  padding-top: 0;
+}
+
+.emphasis {
+  font-size: large;
+  font-weight: bold;
+}
