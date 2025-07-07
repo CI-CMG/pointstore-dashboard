@@ -26,7 +26,7 @@ function useCsbStatistics() {
 export default function SidePanel() {
   const baseClass = 'SidePanel'
   
-  const { status, data, error, isFetching } = useCsbStatistics()
+  const { status, data, error } = useCsbStatistics()
   
   return (
     <div className={baseClass}>

@@ -1,6 +1,6 @@
 import './ArchiveGrowthChart.css'
 import * as Plot from "@observablehq/plot";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import type { SummaryDataType } from '../types'
 
 interface AppProps {

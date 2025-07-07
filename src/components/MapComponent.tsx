@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import MapView from "@arcgis/core/views/MapView";
 import WebMap from "@arcgis/core/WebMap";
 // import type Map from "@arcgis/core/Map"
@@ -16,11 +16,10 @@ export default function MapComponent() {
         },
       })
 
-      const view = new MapView({
+      new MapView({
         container: mapDiv.current,
         map: webmap,
         zoom: 3
-
       })
     }
   }, [mapDiv])

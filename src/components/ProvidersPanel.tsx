@@ -1,5 +1,5 @@
 import './ProvidersPanel.css'
-import type { SummaryDataType } from '../types'
+import type { ICountsByProvider, SummaryDataType } from '../types'
 
 interface AppProps {
   data: SummaryDataType
@@ -7,9 +7,11 @@ interface AppProps {
 
 export default function ProvidersPanel({data}: AppProps) {
   const baseClass = 'ProvidersPanel'
+  console.log({data})
+  // TODO incoming should be number, not string
+  const totalPoints = parseInt(data.record_count)
 
-  
-  function reshapeData(data) {
+  function reshapeData(data:ICountsByProvider) {
     if (!data) { return undefined }
 
     // transform from object w/ one key per provider to array with one object per provider
@@ -28,7 +30,6 @@ export default function ProvidersPanel({data}: AppProps) {
   }
 
 
-  const totalPoints = data.record_count
   const providers = reshapeData(data.counts_by_provider)
 
   return (
