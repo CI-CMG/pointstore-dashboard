@@ -1,5 +1,5 @@
 import './ProvidersPanel.css'
-import type { ICountsByProvider, SummaryDataType } from '../types'
+import type { ProviderStats, SummaryDataType } from '../types'
 
 interface AppProps {
   data: SummaryDataType
@@ -7,30 +7,25 @@ interface AppProps {
 
 export default function ProvidersPanel({data}: AppProps) {
   const baseClass = 'ProvidersPanel'
-  console.log({data})
-  // TODO incoming should be number, not string
-  const totalPoints = parseInt(data.record_count)
+  // console.log({data})
+  const totalPoints = data.record_count
 
-  function reshapeData(data:ICountsByProvider) {
-    if (!data) { return undefined }
 
-    // transform from object w/ one key per provider to array with one object per provider
-    const providers = Object.keys(data).map( key => {
-      const count = parseInt(data[key])
-      let pct = (Math.round((count / totalPoints) * 100)).toString()
+  // WARNING: mutates the provided array by modifying elements
+  function augmentProviderData(data:Array<ProviderStats>, totalCount:number) {
+    // shallow copy
+    const clone = [...data]
+    clone.forEach(i => {
+      let pct = (Math.round((i.count / totalCount) * 100)).toString()
       if (pct === '0') { pct = '<1' }
-      const label = `${count.toLocaleString("en-US")} (${pct}%)`
-      return ({ provider: key, count: count, label: label })
+      i.label = `${i.count.toLocaleString("en-US")} (${pct}%)`
     })
-
     // sort by count in desc order
-    providers.sort((a, b) => b.count - a.count)
-
-    return (providers)
+    clone.sort((a, b) => b.count - a.count)
+    return(clone)
   }
 
-
-  const providers = reshapeData(data.counts_by_provider)
+  const providers = augmentProviderData(data.counts_by_provider, totalPoints)
 
   return (
     <div className={baseClass}>

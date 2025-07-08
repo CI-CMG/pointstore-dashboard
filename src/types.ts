@@ -17,28 +17,32 @@ export type CountsByYearType = {
 }
 
 export type CountsByFiscalYearType = {
-  // TODO should be number
-  count: string
+  count: number
   label: string
   pct?: string
   archiveSize?: number
 }
 
-// TS magic referred to here: https://github.com/microsoft/TypeScript/issues/35859
-// accommodates 
-export interface ICountsByProvider {
-  [propertyName: string]: string;
+export type ProviderStats = {
+  provider: string
+  count: number
+  pct?: number 
+  label?: string
 }
+
+// TS magic referred to here: https://github.com/microsoft/TypeScript/issues/35859
+// accommodates error: "Element implicitly has an 'any' type because type 'Map<string, string>' has no index signature. Did you mean to call 'data.get'?ts(7052)"
+// export interface ICountsByProvider {
+//   [propertyName: string]: number;
+// }
 
 export type SummaryDataType = {
   counts_by_year: Array<CountsByYearType>
-  // TODO should be Map<string, number>
-  counts_by_provider: { [name: string]: string }
+  counts_by_provider: Array<ProviderStats>
   fy_counts: Array<CountsByFiscalYearType>
   max_entry_date: string
   min_entry_date: string
   order_count: OrderCountType
-  // TODO should be number
-  record_count: string
+  record_count: number
   report_date: string
 }
