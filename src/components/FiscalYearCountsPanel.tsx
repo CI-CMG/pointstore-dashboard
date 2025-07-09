@@ -9,11 +9,11 @@ interface AppProps {
 export default function FiscalYearCountsPanel({data}: AppProps) {
   const fy_counts = [...data.fy_counts]
   // augment with growth percentages
-  let runningTotal = parseInt(fy_counts[0].count)
+  let runningTotal = fy_counts[0].count
   fy_counts.forEach((e, idx) => {
     if (idx) {
       // const prevCount = parseInt(fy_counts[idx-1].count)
-      const count = parseInt(e.count)
+      const count = e.count
       runningTotal = runningTotal + count
       // const pct = Math.round(((count - prevCount) / prevCount ) * 100)
       const pct = Math.round((count / runningTotal ) * 100)
@@ -48,9 +48,9 @@ export default function FiscalYearCountsPanel({data}: AppProps) {
                 return (
                   <tr key={e.label}>
                     <td style={{"border":"1px solid white", "padding": "5px"}}>{e.label}</td>
-                    <td style={{"border":"1px solid white"}}>{parseInt(e.count).toLocaleString("en-US")}</td>
-                    <td style={{"border":"1px solid white"}}>{e.pct}</td>
-                    <td style={{"border":"1px solid white"}}>{e.archiveSize ? e.archiveSize.toLocaleString("en-US"): ''}</td>
+                    <td style={{"border":"1px solid white", "padding": "5px"}}>{e.count.toLocaleString("en-US")}</td>
+                    <td style={{"border":"1px solid white", "textAlign": "center"}}>{e.pct}</td>
+                    <td style={{"border":"1px solid white", "padding": "5px"}}>{e.archiveSize ? e.archiveSize.toLocaleString("en-US"): ''}</td>
                   </tr>
                 )
               })
